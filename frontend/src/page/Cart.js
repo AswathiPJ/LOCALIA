@@ -20,36 +20,11 @@ const Cart = () => {
     0
   );
 
-  
-  
-  const handlePayment = async()=>{
+  const handleOrder=()=> {
 
-      if(user.email){
-          
-          const stripePromise = await loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY)
-          const res = await fetch(`${process.env.REACT_APP_SERVER_DOMIN}/create-checkout-session`,{
-            method : "POST",
-            headers  : {
-              "content-type" : "application/json"
-            },
-            body  : JSON.stringify(productCartItem)
-          })
-          if(res.statusCode === 500) return;
-
-          const data = await res.json()
-          console.log(data)
-
-          toast("Redirect to payment Gateway...!")
-          stripePromise.redirectToCheckout({sessionId : data}) 
-      }
-      else{
-        toast("You have not Login!")
-        setTimeout(()=>{
-          navigate("/login")
-        },1000)
-      }
-    
   }
+ 
+  
   return (
     <>
     
@@ -91,8 +66,8 @@ const Cart = () => {
                 <span className="text-red-500">₹</span> {totalPrice}
               </p>
             </div>
-            <button className="bg-red-500 w-full text-lg font-bold py-2 text-white" onClick={handlePayment}>
-              Payment
+            <button className="bg-red-500 w-full text-lg font-bold py-2 text-white" onClick={handleOrder}>
+              Place Order
             </button>
           </div>
         </div>
