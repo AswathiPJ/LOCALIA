@@ -40,12 +40,10 @@ app.get("/", (req, res) => {
 
 //sign up
 app.post("/signup", async (req, res) => {
-  // console.log(req.body);
+  
   const { email } = req.body;
-  console.log("hey here")
-
-
-  const data = userModel.findOne({email : email})
+  const data =await userModel.findOne({email : email})
+  console.log("data"+data)
   if (data) {
     res.send({ message: "Email id is already register", alert: false });
   } else {
@@ -57,17 +55,17 @@ app.post("/signup", async (req, res) => {
 });
 
 //api login
-app.post("/login", (req, res) => {
+app.post("/login",async (req, res) => {
   // console.log(req.body);
   const { email } = req.body;
-  const data =userModel.findOne({ email: email })
+  const data = await userModel.findOne({ email: email })
     if (data) {
       const dataSend = {
-        _id: result._id,
-        firstName: result.firstName,
-        lastName: result.lastName,
-        email: result.email,
-        image: result.image,
+        _id: data._id,
+        firstName: data.firstName,
+        lastName: data.lastName,
+        email: data.email,
+        image: data.image,
       };
       console.log(dataSend);
       res.send({

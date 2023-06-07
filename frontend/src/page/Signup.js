@@ -54,7 +54,6 @@ console.log(process.env.REACT_APP_SERVER_DOMIN)
     const { firstName, email, password, confirmPassword } = data;
     if (firstName && email && password && confirmPassword) {
       if (password === confirmPassword) {
-    
           const fetchData = await fetch(`${process.env.REACT_APP_SERVER_DOMIN}/signup`,{
             method : "POST",
             headers : {
