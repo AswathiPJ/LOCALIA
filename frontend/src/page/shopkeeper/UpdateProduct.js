@@ -17,27 +17,38 @@ const UpdateProduct = () => {
   
   <div className='product-list'>
   <h3 className='text-xl text-bold text-pink-950 mb-5'>PRODUCT LIST</h3>
-  <ul>
-    <li>Id</li>
-    <li>Name</li>
-    <li>Stock</li>
-    <li>Price</li>
-    <li>Update</li>
-  </ul>
-    {
+  <table class="table-fixed border-separate border border-blue-900">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Stock</th>
+      <th>Price</th>
+      <th>Update</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  {
       productData.productList.map((item)=>
-      <ul key={item._id}>
-        <li>{item.productid}</li>
-        <li>{item.productname.split(' ').pop()}</li>
-        <li>{item.stock}</li>
-        <li>{item.price}</li>
-        <li>
-          <button className='bg-pink-800 hover:bg-red-950'>
+
+      <tr key={item._id}>
+      <td>{item.productid}</td>
+      <td>{item.productname.split(' ').pop()}</td>
+      <td>{item.stock}</td>
+      <td>{item.price}</td>
+      <td><button className='bg-pink-800 hover:bg-red-950'>
             <Link to={"/update/"+item._id} className='text-white'>Update</Link>
           </button>
-        </li>
-      </ul>)
+      </td>
+    </tr>
+)
     }
+    
+  </tbody>
+</table>
+  
+    
   </div>
   
   
