@@ -13,7 +13,7 @@ const initialState={
 }
 
 export const productSlice = createSlice({
-    name:"user",
+    name:"products",
     initialState,
     reducers: {
         loginproductRedux:(state,action)=>{
