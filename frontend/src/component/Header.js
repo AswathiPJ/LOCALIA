@@ -5,22 +5,34 @@ import { HiOutlineUserCircle } from "react-icons/hi";
 import { BsCartFill } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutRedux } from "../redux/userSlice";
+import { slogoutRedux} from "../redux/shopkeeperSlice";
 import { toast } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
   const userData = useSelector((state) => state.user);
+  const shopkeeperData = useSelector((state) => state.shopkeeper);
   const dispatch = useDispatch();
 
   const handleShowMenu = () => {
     setShowMenu((preve) => !preve);
   };
   const handleLogout = () => {
-    dispatch(logoutRedux());
+    if(userData){
+      dispatch(logoutRedux());
+    }
+    else if(shopkeeperData){
+      dispatch(slogoutRedux());
+    }
+    
     toast("Logout successfully");
+    navigate("/")
   };
 
   const cartItemNumber = useSelector((state)=>state.product.cartItem)
+
+  const navigate = useNavigate();
   return (
     <header className="fixed shadow-md w-full h-16 px-2 md:px-4 z-50 bg-white">
       {/* desktop */}
@@ -57,14 +69,7 @@ const Header = () => {
             </div>
             {showMenu && (
               <div className="absolute right-2 bg-white py-2  shadow drop-shadow-md flex flex-col min-w-[120px] text-center">
-                {userData.email === process.env.REACT_APP_ADMIN_EMAIL && (
-                  <Link
-                    to={"newproduct"}
-                    className="whitespace-nowrap cursor-pointer px-2"
-                  >
-                    New product
-                  </Link>
-                )}
+  
 
                 {userData.firstName ? (
                   <p
@@ -73,14 +78,28 @@ const Header = () => {
                   >
                     Logout ({userData.firstName}){" "}
                   </p>
+                  
                 ) : (
-                  <Link
-                    to={"login"}
-                    className="whitespace-nowrap cursor-pointer px-2"
-                  >
-                    Login
-                  </Link>
+                  <>
+                  <Link to ={"login"} className='whitespace-nowrap cursor-pointer'>Customer Login</Link>
+                  
+                  </>
                 )}
+                {shopkeeperData.shopname ? (
+                  <p
+                    className="cursor-pointer text-white px-2 bg-red-500"
+                    onClick={handleLogout}
+                  >
+                    Logout ({shopkeeperData.shopname}){" "}
+                  </p>
+                  
+                ) : (
+                  <>
+                  
+                  <Link to ={"shopkeeperlogin"} className='whitespace-nowrap cursor-pointer'>Shopkeeper Login</Link>
+                  </>
+                )}
+
                 <nav className="text-base md:text-lg flex flex-col md:hidden">
                   <Link to={""} className="px-2 py-1">
                     Home

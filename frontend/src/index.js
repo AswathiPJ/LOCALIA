@@ -13,14 +13,22 @@ import Home from "./page/Home";
 import Menu from "./page/Menu";
 import About from "./page/About";
 import Contact from "./page/Contact";
-import Login from "./page/login";
+import Login from "./page/customer/login";
 import Newproduct from "./page/Newproduct";
-import Signup from "./page/Signup";
+import Signup from "./page/customer/Signup";
+import AddProduct from "./page/shopkeeper/AddProduct";
+import Orders from "./page/shopkeeper/Orders";
+import ProductDisplay from "./page/shopkeeper/ProductDisplay";
+import ShopkeeperLogin from "./page/shopkeeper/ShopkeeperLogin";
+import ShopkeeperSignup from "./page/shopkeeper/ShopkeeperSignup";
+import Shopprofile from "./page/shopkeeper/Shopprofile";
+import Update from "./page/shopkeeper/Update";
+import UpdateProduct from "./page/shopkeeper/UpdateProduct";
+
 import { store } from "./redux/index";
 import { Provider } from "react-redux";
-import Cart from "./page/Cart";
-import Success from "./page/Success";
-import Cancel from "./page/Cancel";
+import Cart from "./page/customer/Cart";
+
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -34,8 +42,16 @@ const router = createBrowserRouter(
       <Route path="newproduct" element={<Newproduct />} />
       <Route path="signup" element={<Signup />} />
       <Route path="cart" element={<Cart />} />
-      <Route path="success" element={<Success/>}/>
-      <Route path="cancel" element={<Cancel/>}/>
+
+      <Route path='shopkeeperlogin' element={<ShopkeeperLogin/>}/>
+        <Route path='shopkeepersignup' element={<ShopkeeperSignup/>}/>
+        <Route path='shopprofile' element={<Shopprofile/>}/>
+        <Route path='addproduct' element={<AddProduct/>}/>
+        <Route path='productdisplay' element={<ProductDisplay/>}/>
+        <Route path='updateproduct' element={<UpdateProduct/>}/>
+        <Route path='update/:id' element={<Update/>}/>
+        <Route path='orders' element={<Orders/>}/>
+
     </Route>
   )
 );

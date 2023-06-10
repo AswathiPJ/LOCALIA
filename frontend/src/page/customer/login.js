@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import loginSignupImage from "../assest/login-animation.gif";
+import loginSignupImage from "../../assest/login-animation.gif";
 import { BiShow, BiHide } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import { BsEmojiSmileUpsideDown } from "react-icons/bs";
 import {toast} from "react-hot-toast"
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { loginRedux } from "../redux/userSlice";
+import { loginRedux } from "../../redux/userSlice";
 
 
 const Login = () => {

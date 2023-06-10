@@ -9,7 +9,12 @@ import AllProduct from "../component/AllProduct";
 
 const Home = () => {
   const productData = useSelector((state) => state.product.productList);
-  const homeProductCartList = productData.slice(1, 5);
+  const categoryList = [...new Set(productData.map((el) => el.category))];
+
+ 
+
+
+  const homeProductCartList = productData.slice(0, 5);
   const homeProductCartListVegetables = productData.filter(
     (el) => el.category === "vegetable",
     []
@@ -68,7 +73,7 @@ const Home = () => {
                     key={el._id}
                     id={el._id}
                     image={el.image}
-                    name={el.name}
+                    name={el.productname}
                     price={el.price}
                     category={el.category}
                   />
@@ -79,11 +84,16 @@ const Home = () => {
               })}
         </div>
       </div>
-
+{
+  categoryList.map((category)=>{
+    const filter = productData.filter(
+      (el) => el.category.toLowerCase() === category.toLowerCase()
+    );
+    return(
       <div className="">
         <div className="flex w-full items-center">
           <h2 className="font-bold text-2xl text-slate-800 mb-4">
-            Fresh Vegetables
+            {category}
           </h2>
           <div className="ml-auto flex gap-4">
             <button
@@ -104,13 +114,14 @@ const Home = () => {
           className="flex gap-5 overflow-scroll scrollbar-none scroll-smooth transition-all"
           ref={slideProductRef}
         >
-          {homeProductCartListVegetables[0]
-            ? homeProductCartListVegetables.map((el) => {
+          
+          {filter[0]
+            ? filter.map((el) => {
                 return (
                   <CardFeature
-                    key={el._id+"vegetable"}
+                    key={el._id+category}
                     id={el._id}
-                    name={el.name}
+                    name={el.productname}
                     category={el.category}
                     price={el.price}
                     image={el.image}
@@ -122,8 +133,14 @@ const Home = () => {
               ))}
         </div>
       </div>
+
+    )
+  })
       
-      <AllProduct heading={"Your Product"}/>
+
+  }
+
+
     </div>
   );
 };
