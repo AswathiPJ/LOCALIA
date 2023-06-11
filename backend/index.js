@@ -273,6 +273,7 @@ const orderSchema = mongoose.Schema({
       type: [mongoose.Schema.Types.ObjectId],
       require: true,
   },
+    shopname:"String",
     name: "String",
     category: "String",
     qty: "String",
@@ -296,6 +297,16 @@ res.send({message:"success"})
 
 app.get('/orders/:id',async(req,res)=>{
   let result = await orderModel.find({userId:req.params.id})
+  console.log("result is "+result)
+  if(result){
+      res.send({result})
+  }
+  else{
+      res.send({"result":"No orders found"})
+  }
+})
+app.get('/shoporders/:id',async(req,res)=>{
+  let result = await orderModel.find({shopname:req.params.id})
   console.log("result is "+result)
   if(result){
       res.send({result})

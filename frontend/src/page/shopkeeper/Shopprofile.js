@@ -22,10 +22,12 @@ const Shopprofile = () => {
     </div> */}
       <div class="column right bg-white p-3 md:p-4 ">
         <p className='mt-5 text-xl'>PROFILE</p>
-        <p className='mt-10'>Licence Number: {shopkeeperData.shopname} </p>
-          <p className='mt-10'>Licence Number: {shopkeeperData.shoplicencenumber} </p>
+          <p className='mt-10'>Shop Name: {shopkeeperData.shopname} </p>
+          <p className='mt-2'>Licence Number: {shopkeeperData.shoplicencenumber} </p>
           <p className='mt-2'> Location: {shopkeeperData.city} </p>
-          <p className='mt-2'> Phone Number: {shopkeeperData.phonenumber} </p>          
+          <p className='mt-2'>Landmark: {shopkeeperData.landmark} </p>
+          <p className='mt-2'> Phone Number: {shopkeeperData.phonenumber} </p> 
+          <p className='mt-2'>Working Hours: {shopkeeperData.workinghours} </p>         
       </div>
       
     </div>

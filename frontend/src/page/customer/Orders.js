@@ -46,7 +46,7 @@ function Orders() {
 
       <tr key={item._id}>
       {/* <td>{item.image}</td> */}
-      <td>{item.name.split(' ').pop()}</td>
+      <td>{item.name}</td>
       <td>{item.category}</td>
       <td>{item.qty}</td>
       <td>{item.total}</td>

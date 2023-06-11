@@ -22,7 +22,7 @@ const Header = () => {
     if(userData){
       dispatch(logoutRedux());
     }
-    else if(shopkeeperData){
+    if(shopkeeperData){
       dispatch(slogoutRedux());
     }
     
@@ -50,7 +50,7 @@ const Header = () => {
             <Link to={"shopprofile"}>Profile</Link>
             <Link to={"addproduct"}>Add product</Link>
             <Link to={"updateproduct"}>Update product</Link>
-            <Link to={"shoporders"}>Orders</Link>
+            <Link to={"shoporders/"+shopkeeperData.shopname}>Orders</Link>
           </nav>
           
           <div className=" text-slate-600" onClick={handleShowMenu}>

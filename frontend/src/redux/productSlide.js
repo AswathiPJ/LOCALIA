@@ -14,6 +14,7 @@ export const productSlice = createSlice({
       state.productList = [...action.payload];
     },
     addCartItem: (state, action) => {
+      
       const check = state.cartItem.some((el) => el._id === action.payload._id);
       if (check) {
         toast("Already Item in Cart");

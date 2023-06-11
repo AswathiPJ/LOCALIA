@@ -1,9 +1,66 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
+import { useSelector } from 'react-redux';
+import {useParams} from 'react-router-dom'
 
-const Orders = () => {
+function Orders() {
   
+  const shopkeeperData = useSelector((state) => state.shopkeeper);
+  const params=useParams()
+ const [orders,setOrders]=useState([])
+
+  
+  useEffect(()=>{
+    
+    
+    (async()=>{
+      console.log(shopkeeperData.shopname)
+      const res = await fetch(`${process.env.REACT_APP_SERVER_DOMIN}/shoporders/${params.id}`)
+      const resData = await res.json()
+      console.log(resData)
+      // const orderList=[...{resData}]
+      // console.log("orderList is "+orderList)
+      setOrders(resData.result)
+      console.log(orders)
+      
+    })()
+  },[])
+    
+      
   return (
-    <div>Orders</div>
+    <div>
+      <h3 className='text-xl text-bold text-pink-950 mb-5'>ORDERS</h3>
+  <table style={{width:"100%" }} class="styled-table" >
+  <thead>
+    <tr>
+      {/* <th>Product</th> */}
+      <th>Name</th>
+      <th>Category</th>
+      <th>Quantity</th>
+      <th>Amount</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  {
+      orders.map((item)=>
+
+      <tr key={item._id}>
+      {/* <td>{item.image}</td> */}
+      <td>{item.name}</td>
+      <td>{item.category}</td>
+      <td>{item.qty}</td>
+      <td>{item.total}</td>
+  
+    </tr>
+)
+    }
+    
+  </tbody>
+</table>
+  
+    
+  
+    </div>
   )
 }
 

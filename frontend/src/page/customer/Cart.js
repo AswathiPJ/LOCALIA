@@ -9,6 +9,7 @@ import { emptycart} from "../../redux/productSlide";
 
 const Cart = () => {
   const productCartItem = useSelector((state) => state.product.cartItem);
+  console.log(productCartItem)
   const user = useSelector(state => state.user)
   const userId=user._id
   console.log(user)
@@ -28,14 +29,14 @@ const Cart = () => {
   const handleOrder=async ()=> {
 
     productCartItem.map(async (el)=>{
-      const {name,category,image,qty,total}=el
+      const {name,category,image,qty,total,shopname}=el
       
     const fetchData = await fetch(`${process.env.REACT_APP_SERVER_DOMIN}/orders`,{
       method : "POST",
       headers : {
         "content-type" : "application/json"
       },
-      body : JSON.stringify({userId,name,category,image,qty,total})
+      body : JSON.stringify({userId,name,category,image,qty,total,shopname})
     })
     const dataRes = await fetchData.json()
     console.log(dataRes)

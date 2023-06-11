@@ -125,6 +125,7 @@ const Home = () => {
                     category={el.category}
                     price={el.price}
                     image={el.image}
+                    shopname={el.shopname}
                   />
                 );
               })
