@@ -81,11 +81,7 @@ const uploadImage =async(e)=> {
 
   return (
     <div class="row">
-      <div class="column left bg-red-200">
-      <div className='mt-5'>
-          <Link to={"/shopprofile"} >PROFILE</Link>
-          </div>
-    </div>
+      
       <div class="column right bg-white p-3 md:p-4">
       <div className='w-full max-w-sm m-auto'>
           <h1 className='text-center text-xl text-black'>

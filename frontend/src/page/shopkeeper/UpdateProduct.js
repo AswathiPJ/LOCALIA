@@ -13,9 +13,7 @@ const UpdateProduct = () => {
   
   return (
  <div>
-  <div className='mt-5'>
-          <Link to={"/shopprofile"} >PROFILE</Link>
-  </div>
+  
   
   <div className='product-list'>
   <h3 className='text-xl text-bold text-pink-950 mb-5'>PRODUCT LIST</h3>

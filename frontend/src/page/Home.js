@@ -14,7 +14,7 @@ const Home = () => {
  
 
 
-  const homeProductCartList = productData.slice(0, 5);
+  const homeProductCartList = productData.slice(0, 3);
   const homeProductCartListVegetables = productData.filter(
     (el) => el.category === "vegetable",
     []

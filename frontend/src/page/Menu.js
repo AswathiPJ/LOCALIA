@@ -31,9 +31,11 @@ const Menu = () => {
         </div>
         <div className="flex flex-col gap-1">
           <h3 className="font-semibold text-slate-600  capitalize text-2xl md:text-4xl">
-            {productDisplay.name}
+            {productDisplay.productname}
           </h3>
-          <p className=" text-slate-500  font-medium text-2xl">{productDisplay.category}</p>
+          <p className=" text-slate-500  font-medium text-2xl">{productDisplay.shopname}</p>
+          <p className=" text-slate-500  font-small text-2xl">{productDisplay.category}</p>
+
           <p className=" font-bold md:text-2xl">
             <span className="text-red-500 ">₹</span>
             <span>{productDisplay.price}</span>
@@ -44,7 +46,7 @@ const Menu = () => {
           </div>
           <div>
             <p className="text-slate-600 font-medium">Description : </p>
-            <p>{productDisplay.description}</p>
+            <p>{productDisplay.otherdetails}</p>
           </div>
         </div>
       </div>
