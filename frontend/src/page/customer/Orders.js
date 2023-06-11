@@ -1,44 +1,56 @@
-import React, { useEffect, useState } from 'react'
-
+import React, { useEffect, useRef, useState } from 'react'
+import { useSelector } from 'react-redux';
+import {useParams} from 'react-router-dom'
 
 function Orders() {
   
-  // useEffect(()=>{
-  //   (async()=>{
-  //     const res = await fetch(`${process.env.REACT_APP_SERVER_DOMIN}/orders`)
-  //     const resData = await res.json()
-  //     console.log("resdata:"+resData)
-  //   })()
-  // },[])
+  const userData = useSelector((state) => state.user);
+  const params=useParams()
+ const [orders,setOrders]=useState([])
+
+  
+  useEffect(()=>{
+    
+    
+    (async()=>{
+      console.log(userData._id)
+      const res = await fetch(`${process.env.REACT_APP_SERVER_DOMIN}/orders/${params.id}`)
+      const resData = await res.json()
+      console.log(resData)
+      // const orderList=[...{resData}]
+      // console.log("orderList is "+orderList)
+      setOrders(resData.result)
+      console.log(orders)
+      
+    })()
+  },[])
     
       
   return (
     <div>
-      {/* <h3 className='text-xl text-bold text-pink-950 mb-5'>ORDERS</h3>
+      <h3 className='text-xl text-bold text-pink-950 mb-5'>ORDERS</h3>
   <table style={{width:"100%" }} class="styled-table" >
   <thead>
     <tr>
-      <th>Id</th>
+      {/* <th>Product</th> */}
       <th>Name</th>
-      <th>Stock</th>
-      <th>Price</th>
-      <th>Update</th>
+      <th>Category</th>
+      <th>Quantity</th>
+      <th>Amount</th>
     </tr>
   </thead>
 
   <tbody>
   {
-      productData.productList.map((item)=>
+      orders.map((item)=>
 
       <tr key={item._id}>
-      <td>{item.productid}</td>
-      <td>{item.productname.split(' ').pop()}</td>
-      <td>{item.stock}</td>
-      <td>{item.price}</td>
-      <td><button className='bg-pink-800 hover:bg-red-950'>
-            <Link to={"/update/"+item._id} className='text-white'>Update</Link>
-          </button>
-      </td>
+      {/* <td>{item.image}</td> */}
+      <td>{item.name.split(' ').pop()}</td>
+      <td>{item.category}</td>
+      <td>{item.qty}</td>
+      <td>{item.total}</td>
+  
     </tr>
 )
     }
@@ -47,7 +59,7 @@ function Orders() {
 </table>
   
     
-   */}
+  
     </div>
   )
 }

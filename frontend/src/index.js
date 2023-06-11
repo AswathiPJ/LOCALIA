@@ -43,7 +43,7 @@ const router = createBrowserRouter(
       <Route path="newproduct" element={<Newproduct />} />
       <Route path="signup" element={<Signup />} />
       <Route path="cart" element={<Cart />} />
-      <Route path="orders" element={<Orders />} />
+      <Route path="orders/:id" element={<Orders />} />
 
       <Route path='shopkeeperlogin' element={<ShopkeeperLogin/>}/>
         <Route path='shopkeepersignup' element={<ShopkeeperSignup/>}/>
@@ -52,7 +52,7 @@ const router = createBrowserRouter(
         <Route path='productdisplay' element={<ProductDisplay/>}/>
         <Route path='updateproduct' element={<UpdateProduct/>}/>
         <Route path='update/:id' element={<Update/>}/>
-        <Route path='orders' element={<ShopOrders/>}/>
+        <Route path='shoporders' element={<ShopOrders/>}/>
 
     </Route>
   )

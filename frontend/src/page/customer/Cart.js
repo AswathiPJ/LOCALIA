@@ -1,10 +1,11 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import CartProduct from "../../component/cartProduct";
 import emptyCartImage from "../../assest/empty.gif"
 import { toast } from "react-hot-toast";
 import {loadStripe} from '@stripe/stripe-js';
-import { useNavigate } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
+import { emptycart} from "../../redux/productSlide";
 
 const Cart = () => {
   const productCartItem = useSelector((state) => state.product.cartItem);
@@ -12,6 +13,8 @@ const Cart = () => {
   const userId=user._id
   console.log(user)
   const navigate = useNavigate()
+  const dispatch=useDispatch()
+  
 
   const totalPrice = productCartItem.reduce(
     (acc, curr) => acc + parseInt(curr.total),
@@ -41,7 +44,8 @@ const Cart = () => {
 
     
     toast("Order placed successfully")
-    navigate('/orders')
+    dispatch(emptycart())
+    navigate('/orders/'+ user._id)
   }
  
   

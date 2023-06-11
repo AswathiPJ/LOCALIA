@@ -295,9 +295,10 @@ res.send({message:"success"})
 
 
 app.get('/orders/:id',async(req,res)=>{
-  let result = await orderModel.findOne({userId:req.params.id})
+  let result = await orderModel.find({userId:req.params.id})
+  console.log("result is "+result)
   if(result){
-      res.send(result)
+      res.send({result})
   }
   else{
       res.send({"result":"No orders found"})
