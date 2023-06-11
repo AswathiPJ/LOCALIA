@@ -9,6 +9,8 @@ import { useNavigate } from "react-router-dom";
 const Cart = () => {
   const productCartItem = useSelector((state) => state.product.cartItem);
   const user = useSelector(state => state.user)
+  const userId=user._id
+  console.log(user)
   const navigate = useNavigate()
 
   const totalPrice = productCartItem.reduce(
@@ -20,8 +22,26 @@ const Cart = () => {
     0
   );
 
-  const handleOrder=()=> {
+  const handleOrder=async ()=> {
 
+    productCartItem.map(async (el)=>{
+      const {name,category,image,qty,total}=el
+      
+    const fetchData = await fetch(`${process.env.REACT_APP_SERVER_DOMIN}/orders`,{
+      method : "POST",
+      headers : {
+        "content-type" : "application/json"
+      },
+      body : JSON.stringify({userId,name,category,image,qty,total})
+    })
+    const dataRes = await fetchData.json()
+    console.log(dataRes)
+    })
+    
+
+    
+    toast("Order placed successfully")
+    navigate('/orders')
   }
  
   

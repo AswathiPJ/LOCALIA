@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-const mongoose = require("mongoose");
+const mongoose= require("mongoose");
 const dotenv = require("dotenv").config();
 const bcrypt=require("bcryptjs")
 const Stripe = require('stripe')
@@ -267,6 +267,41 @@ app.get("/product",async(req,res)=>{
 })
 
 
+const orderSchema = mongoose.Schema({
+  
+    userId:{
+      type: [mongoose.Schema.Types.ObjectId],
+      require: true,
+  },
+    name: "String",
+    category: "String",
+    qty: "String",
+    total: "String",
+    image:"String"
+})
 
+const orderModel = mongoose.model("orders",orderSchema)
+
+app.post("/orders", async (req, res) => {
+  console.log(req.body)
+    const data = orderModel(req.body);
+    const save = data.save();
+  
+    
+res.send({message:"success"})
+
+});
+
+
+
+app.get('/orders/:id',async(req,res)=>{
+  let result = await orderModel.findOne({userId:req.params.id})
+  if(result){
+      res.send(result)
+  }
+  else{
+      res.send({"result":"No orders found"})
+  }
+})
 //server is ruuning
 app.listen(PORT, () => console.log("server is running at port : " + PORT));

@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import "./UpdateProduct.css"
+
 
 
 
@@ -17,7 +19,7 @@ const UpdateProduct = () => {
   
   <div className='product-list'>
   <h3 className='text-xl text-bold text-pink-950 mb-5'>PRODUCT LIST</h3>
-  <table class="table-fixed border-separate border border-blue-900">
+  <table style={{width:"100%" }} class="styled-table" >
   <thead>
     <tr>
       <th>Id</th>
