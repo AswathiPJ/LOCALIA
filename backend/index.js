@@ -1,7 +1,9 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose= require("mongoose");
-const dotenv = require("dotenv").config();
+const dotenv = require("dotenv").config()
+const path = require('path')
+// require('dotenv').config({ path: '../.env' })
 const bcrypt=require("bcryptjs")
 const Stripe = require('stripe')
 
@@ -14,7 +16,7 @@ const PORT = process.env.PORT || 8080;
 //mongodb connection
 mongoose.set("strictQuery", false);
 mongoose
-  .connect("mongodb+srv://aswathipj:mongodb%40pro@cluster0.3pwieru.mongodb.net/localia?retryWrites=true&w=majority")
+  .connect(process.env.MONGODB_URL)
   .then(() => console.log("Connect to Database"))
   .catch((err) => console.log(err));
 
