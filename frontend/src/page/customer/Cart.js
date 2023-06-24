@@ -46,7 +46,7 @@ const Cart = () => {
     
     toast("Order placed successfully")
     dispatch(emptycart())
-    navigate('/orders/'+ user._id)
+    navigate('/')
   }
  
   

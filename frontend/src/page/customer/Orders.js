@@ -10,9 +10,7 @@ function Orders() {
 
   
   useEffect(()=>{
-    
-    
-    (async()=>{
+    const fetchData = async ()=>{
       console.log(userData._id)
       const res = await fetch(`${process.env.REACT_APP_SERVER_DOMIN}/orders/${params.id}`)
       const resData = await res.json()
@@ -21,8 +19,9 @@ function Orders() {
       // console.log("orderList is "+orderList)
       setOrders(resData.result)
       console.log(orders)
-      
-    })()
+    }
+    
+    fetchData()
   },[])
     
       

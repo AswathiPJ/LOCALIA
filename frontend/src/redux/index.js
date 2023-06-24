@@ -4,6 +4,8 @@ import productSlideReducer from "./productSlide";
 import shopkeeperSliceReducer from "./shopkeeperSlice";
 import productSliceReducer from "./productSlice";
 import productsSliceReducer from "./productsSlice";
+import adminSliceReducer from "./adminSlice";
+import deliverySliceReducer from "./deliverySlice";
 
 
 export const store = configureStore({
@@ -11,8 +13,10 @@ export const store = configureStore({
     user : userSliceReducer,
     shopkeeper:shopkeeperSliceReducer,
     product: productSlideReducer,
-    // products :productSliceReducer,
-    products:productsSliceReducer
+     //productss :productSliceReducer,
+    products:productsSliceReducer,
+    admin:adminSliceReducer,
+    delivery:deliverySliceReducer
     
     
   },

@@ -6,10 +6,10 @@ import { useState } from "react";
 import { Toast, toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import {useDispatch,useSelector} from 'react-redux'
-import { sloginRedux } from '../../redux/shopkeeperSlice';
+import { dloginRedux } from '../../redux/deliverySlice';
 
 
-const ShopkeeperLogin = () => {
+const DeliveryLogin = () => {
   const [showPassword,setShowPassword] = useState(false)
   const handleShowPassword = ()=>{
         setShowPassword(preve=> !preve)
@@ -19,7 +19,8 @@ const ShopkeeperLogin = () => {
       password: ""
    })
    const navigate = useNavigate()
-   const userData = useSelector((state)=>state)
+   const deliveryData = useSelector((state)=>state)
+   console.log(deliveryData.delivery)
 
    const dispatch = useDispatch()
 
@@ -36,7 +37,7 @@ const ShopkeeperLogin = () => {
       e.preventDefault()
       const {phonenumber,password} = data
       if(phonenumber && password){
-        const fetchData=await fetch(`${process.env.REACT_APP_SERVER_DOMIN}/shopkeeperlogin`,{
+        const fetchData=await fetch(`${process.env.REACT_APP_SERVER_DOMIN}/deliverylogin`,{
           method: "POST",
           headers: {
             "content-type":"application/json"
@@ -45,14 +46,13 @@ const ShopkeeperLogin = () => {
         })
       
         const dataRes = await fetchData.json()
-        console.log("fetch"+dataRes)
-        console.log(userData.user)
+        console.log("backend"+dataRes)
         toast(dataRes.message)
 
         if(dataRes.alert){
-          dispatch(sloginRedux(dataRes))
+          dispatch(dloginRedux(dataRes))
           setTimeout(()=>{
-            navigate('/shopprofile')
+            navigate('/deliveryprofile')
           },1000);
           
         }
@@ -84,7 +84,7 @@ const ShopkeeperLogin = () => {
             
             <button className='w-full m-auto mt-4 max-w-[400px] max-w-[100py] bg-pink-900 hover:bg-pink-950 cursor pointer text-white text-lg font-medium text-center rounded-full'>Login as Shopkeeper</button>
           </form>
-          <p className='text-center text-sm'>Don't have an account ? <Link to="/shopkeepersignup" className='text-pink-950 underline'>Shopkeeper Signup</Link></p>
+          <p className='text-center text-sm'>Don't have an account ? <Link to="/deliverysignup" className='text-pink-950 underline'>Delivery Signup</Link></p>
         </div>
       </div>
       <div class="column right bg-red-50">
@@ -102,4 +102,4 @@ const ShopkeeperLogin = () => {
   )
 }
 
-export default ShopkeeperLogin
+export default DeliveryLogin

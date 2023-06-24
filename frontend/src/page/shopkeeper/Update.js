@@ -62,9 +62,7 @@ const handleSubmit=async(e)=>{
   return (
     <div className="row">
       <div className="column left bg-red-200">
-      <div className='mt-5'>
-          <Link to={"/shopprofile"} >PROFILE</Link>
-          </div>
+      
           
     </div>
       <div className="column right bg-white p-3 md:p-4">

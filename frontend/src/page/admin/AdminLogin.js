@@ -6,20 +6,26 @@ import { useState } from "react";
 import { Toast, toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import {useDispatch,useSelector} from 'react-redux'
-import { sloginRedux } from '../../redux/shopkeeperSlice';
+import { aloginRedux } from '../../redux/adminSlice';
 
 
-const ShopkeeperLogin = () => {
+const AdminLogin = () => {
   const [showPassword,setShowPassword] = useState(false)
   const handleShowPassword = ()=>{
         setShowPassword(preve=> !preve)
    }
   const [data,setData] = useState({
-      phonenumber: "",
+      email:"",
       password: ""
    })
+
+  //  const [email,setEmail]=useState("")
+  //  const [password,setPassword]=useState("")
+
+
    const navigate = useNavigate()
-   const userData = useSelector((state)=>state)
+   const adminData = useSelector((state)=>state.admin)
+   console.log("admin"+adminData.email)
 
    const dispatch = useDispatch()
 
@@ -34,9 +40,10 @@ const ShopkeeperLogin = () => {
    }
    const handleSubmit=async(e)=>{
       e.preventDefault()
-      const {phonenumber,password} = data
-      if(phonenumber && password){
-        const fetchData=await fetch(`${process.env.REACT_APP_SERVER_DOMIN}/shopkeeperlogin`,{
+      const {email,password} = data
+
+      if(email && password){
+        const fetchData=await fetch(`${process.env.REACT_APP_SERVER_DOMIN}/adminlogin`,{
           method: "POST",
           headers: {
             "content-type":"application/json"
@@ -46,13 +53,12 @@ const ShopkeeperLogin = () => {
       
         const dataRes = await fetchData.json()
         console.log("fetch"+dataRes)
-        console.log(userData.user)
         toast(dataRes.message)
 
         if(dataRes.alert){
-          dispatch(sloginRedux(dataRes))
+          dispatch(aloginRedux(dataRes))
           setTimeout(()=>{
-            navigate('/shopprofile')
+            navigate('/adminorders')
           },1000);
           
         }
@@ -61,6 +67,8 @@ const ShopkeeperLogin = () => {
       else{
         alert("Please enter required fields")
       }
+
+      
    }
   return (
     <div class="row">
@@ -73,8 +81,8 @@ const ShopkeeperLogin = () => {
         </div>
         <div className='p-3 md:p-4 w-full max-w-lg m-auto'>
         <form className='py-4 flex flex-col' onSubmit={handleSubmit}>
-            <label htmlFor='phonenumber'>Phone Number</label>
-            <input type={'text'} id="phonenumber" name='phonenumber' className='mt-1 mb-2 w-full bg-neutral-200 px-2 py-1 rounded focus-within:outline-pink-800' value={data.phonenumber} onChange={handleOnChange}/>
+            <label htmlFor='phonenumber'>Email</label>
+            <input type={'text'} id="phonenumber" name='email' className='mt-1 mb-2 w-full bg-neutral-200 px-2 py-1 rounded focus-within:outline-pink-800' value={data.email} onChange={handleOnChange}/>
             
             <label htmlFor='password'>Password</label>
               <div className='flex px-2 py-1 bg-neutral-200 rounded mt-1 mb-2 outline focus-within:outline-pink-800'>
@@ -82,9 +90,9 @@ const ShopkeeperLogin = () => {
               <span className='flex text-xl cursor pointer' onClick={handleShowPassword}>{showPassword ?<BiShow/> :<BiHide/>}</span>
               </div>
             
-            <button className='w-full m-auto mt-4 max-w-[400px] max-w-[100py] bg-pink-900 hover:bg-pink-950 cursor pointer text-white text-lg font-medium text-center rounded-full'>Login as Shopkeeper</button>
+            <button className='w-full m-auto mt-4 max-w-[400px] max-w-[100py] bg-pink-900 hover:bg-pink-950 cursor pointer text-white text-lg font-medium text-center rounded-full'>Login as Admin</button>
           </form>
-          <p className='text-center text-sm'>Don't have an account ? <Link to="/shopkeepersignup" className='text-pink-950 underline'>Shopkeeper Signup</Link></p>
+          
         </div>
       </div>
       <div class="column right bg-red-50">
@@ -102,4 +110,4 @@ const ShopkeeperLogin = () => {
   )
 }
 
-export default ShopkeeperLogin
+export default AdminLogin

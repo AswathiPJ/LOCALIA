@@ -72,6 +72,23 @@ const shopkeeperSchema = mongoose.Schema({
 })
 
 const shopkeeperModel = mongoose.model("shopkeepers",shopkeeperSchema)
+
+
+
+const deliverySchema = mongoose.Schema({
+
+    firstname: "String",
+    lastname: "String",
+    phonenumber: "String",
+    email: "String",
+    licencenumber: "String",
+    city: "String",
+    password: "String"
+})
+
+const deliveryModel = mongoose.model("delivery",deliverySchema)
+
+
 //api
 app.get("/", (req, res) => {
   res.send("Server is running");
@@ -176,7 +193,7 @@ app.post("/shopkeeperlogin",async (req,res)=>{
       pincode:resultdata.pincode,
       phonenumber:resultdata.phonenumber
    }
-   console.log(dataSend);
+   console.log("data"+dataSend);
     res.send({
       message: "Login is successfull",
       alert: true,
@@ -238,6 +255,77 @@ app.put('/update/:id',async(req,res)=>{
   res.send(result)
 })
 
+//delivery
+
+app.post("/deliverysignup",async (req,res)=>{
+  console.log("Enter")
+  const {firstname,lastname,phonenumber,email,licencenumber,city,password} = req.body
+
+  const resultdata = await shopkeeperModel.findOne({phonenumber})
+  if(!resultdata){
+   const salt = await bcrypt.genSalt(10)
+   const hashedPassword = await bcrypt.hash(password,salt)
+   const user = await deliveryModel.create({
+    firstname,
+    lastname,
+    phonenumber,
+    email,
+    licencenumber,
+    city,
+    password:hashedPassword
+   })
+   if(user){
+      const dataSend = {
+          _id:user._id,
+          firstname:user.firstname,
+          lastname:user.lastname,
+          phonenumber:user.phonenumber,
+          email:user.email,
+          licencenumber:user,
+          city:user.city,
+
+       }
+      res.send({message:"Successfully sign up",alert: true,data:dataSend})
+   }
+   else{
+      res.send({message:"Invalid details",alert:false})
+   }
+  }
+  else{
+      res.send({message: "Phone number is already registered",alert: false})
+  }
+  
+})
+
+
+app.post("/deliverylogin",async (req,res)=>{
+  const {phonenumber,password} = req.body
+
+  const resultdata = await deliveryModel.findOne({phonenumber})
+  console.log(resultdata)
+  if(resultdata && await bcrypt.compare(password,resultdata.password)){
+   //condition if email is not available in database
+   const dataSend = {
+      _id:resultdata._id,
+      firstname:resultdata.firstname,
+      lastname:resultdata.lastname,
+      phonenumber:resultdata.phonenumber,
+      email:resultdata.email,
+      licencenumber:resultdata.licencenumber,
+      city:resultdata.city
+   }
+   console.log("data"+dataSend)
+    res.send({
+      message: "Login is successfull",
+      alert: true,
+      data: dataSend,
+    });
+  }
+  else{
+      res.send({message: "Invalid credentials",alert: false})
+  }
+})
+
 
 // //product section
 
@@ -280,7 +368,9 @@ const orderSchema = mongoose.Schema({
     category: "String",
     qty: "String",
     total: "String",
-    image:"String"
+    image:"String",
+    deliveryguy:"String",
+    deliverystatus:"String"
 })
 
 const orderModel = mongoose.model("orders",orderSchema)
@@ -296,6 +386,67 @@ res.send({message:"success"})
 });
 
 
+//admin
+
+app.get("/adminorders",async(req,res)=>{
+  console.log("Enter admin")
+  const data = await orderModel.find({})
+  res.send(JSON.stringify(data))
+  
+});
+
+app.get('/assign/:id',async(req,res)=>{
+  let result = await orderModel.findOne({_id:req.params.id})
+  if(result){
+      res.send(result)
+  }
+  else{
+      res.send({"result":"No records found"})
+  }
+})
+
+app.put('/assign/:id',async(req,res)=>{
+  let result = await orderModel.updateOne(
+      {_id:req.params.id},{...req.body}      
+  )
+  console.log(result)
+  res.send(result)
+})
+
+const adminSchema = mongoose.Schema({
+  
+  
+  email: "String",
+  password: "String"
+})
+
+const adminModel = mongoose.model("admin",adminSchema)
+
+
+app.post("/adminlogin",async (req,res)=>{
+  const {email,password} = req.body
+
+  const resultdata = await adminModel.findOne({email})
+  console.log(resultdata)
+  if(resultdata && (password==resultdata.password)){
+   //condition if email is not available in database
+   const dataSend = {
+      _id:resultdata._id,
+      email:resultdata.email,
+      password:resultdata.password
+
+   }
+   console.log("data"+dataSend);
+    res.send({
+      message: "Login is successfull",
+      alert: true,
+      data: dataSend,
+    });
+  }
+  else{
+      res.send({message: "Invalid credentials",alert: false})
+  }
+})
 
 app.get('/orders/:id',async(req,res)=>{
   let result = await orderModel.find({userId:req.params.id})
