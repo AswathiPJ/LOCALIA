@@ -270,6 +270,14 @@ const Header = () => {
           <Link to={"about"}>About</Link>
           <Link to={"contact"}>Contact</Link>
         </nav>
+        <div className="text-2xl text-slate-600 relative">
+          <Link to={"cart"}>
+            <BsCartFill />
+            <div className="absolute -top-1 -right-1 text-white bg-red-500 h-4 w-4 rounded-full m-0 p-0 text-sm text-center ">
+              {cartItemNumber.length}
+            </div>
+          </Link>
+        </div>
         
         <div className=" text-slate-600" onClick={handleShowMenu}>
           <div className="text-3xl cursor-pointer w-8 h-8 rounded-full overflow-hidden drop-shadow-md">
@@ -339,6 +347,14 @@ const Header = () => {
           <Link to={"about"}>About</Link>
           <Link to={"contact"}>Contact</Link>
         </nav>
+        <div className="text-2xl text-slate-600 relative">
+          <Link to={"login"}>
+            <BsCartFill />
+            <div className="absolute -top-1 -right-1 text-white bg-red-500 h-4 w-4 rounded-full m-0 p-0 text-sm text-center ">
+              {cartItemNumber.length}
+            </div>
+          </Link>
+        </div>
         
         <div className=" text-slate-600" onClick={handleShowMenu}>
           <div className="text-3xl cursor-pointer w-8 h-8 rounded-full overflow-hidden drop-shadow-md">

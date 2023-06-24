@@ -51,7 +51,7 @@ const Menu = () => {
         </div>
       </div>
 
-      <AllProduct heading={"Related Product"}/>
+      
     </div>
   );
 };
