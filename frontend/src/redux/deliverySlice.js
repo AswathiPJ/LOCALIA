@@ -2,8 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   email: "",
-  firstName: "",
-  lastName: "",
+  firstname: "",
+  lastname: "",
+  phonenumber:"",
+  email:"",
+  licencenumber:"",
+  city:"",
   _id: "",
 };
 
@@ -24,9 +28,13 @@ export const deliverySlice = createSlice({
     },
     dlogoutRedux: (state, action) => {
       state._id = "";
-      state.firstName = "";
-      state.lastName = "";
+      state.firstname = "";
+      state.lastname = "";
+      state.phonenumber="";
       state.email = "";
+      state.licencenumber="";
+      state.city="";
+
 
     },
   },

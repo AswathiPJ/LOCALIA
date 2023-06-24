@@ -6,6 +6,8 @@ import { BsCartFill } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutRedux } from "../redux/userSlice";
 import { slogoutRedux} from "../redux/shopkeeperSlice";
+import { dlogoutRedux} from "../redux/deliverySlice";
+import { alogoutRedux} from "../redux/adminSlice";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
@@ -27,7 +29,14 @@ const Header = () => {
     if(shopkeeperData){
       dispatch(slogoutRedux());
     }
+    if(deliveryData){
+      dispatch(dlogoutRedux());
+    }
+    if(adminData){
+      dispatch(alogoutRedux());
+    }
     
+
     toast("Logout successfully");
     navigate("/")
   };
@@ -69,20 +78,7 @@ const Header = () => {
               <div className="absolute right-2 bg-white py-2  shadow drop-shadow-md flex flex-col min-w-[120px] text-center">
   
 
-                {userData.firstName ? (
-                  <p
-                    className="cursor-pointer text-white px-2 bg-red-500"
-                    onClick={handleLogout}
-                  >
-                    Logout ({userData.firstName}){" "}
-                  </p>
-                  
-                ) : (
-                  <>
-                  <Link to ={"login"} className='whitespace-nowrap cursor-pointer'>Customer Login</Link>
-                  
-                  </>
-                )}
+                
                 {shopkeeperData.shopname ? (
                   <p
                     className="cursor-pointer text-white px-2 bg-red-500"
@@ -134,7 +130,7 @@ const Header = () => {
       <div className="flex items-center gap-4 md:gap-7">
         <nav className="gap-4 md:gap-6 text-base md:text-lg hidden md:flex">
         <Link to={"deliveryprofile"}>Profile</Link>
-          <Link to={"adminorders"}>View Orders</Link>
+          <Link to={"deliveryorders"}>View Orders</Link>
         
         </nav>
         
@@ -150,32 +146,19 @@ const Header = () => {
             <div className="absolute right-2 bg-white py-2  shadow drop-shadow-md flex flex-col min-w-[120px] text-center">
 
 
-              {userData.firstName ? (
+             
+              {deliveryData.firstname ? (
                 <p
                   className="cursor-pointer text-white px-2 bg-red-500"
                   onClick={handleLogout}
                 >
-                  Logout ({userData.firstName}){" "}
-                </p>
-                
-              ) : (
-                <>
-                <Link to ={"login"} className='whitespace-nowrap cursor-pointer'>Customer Login</Link>
-                
-                </>
-              )}
-              {shopkeeperData.shopname ? (
-                <p
-                  className="cursor-pointer text-white px-2 bg-red-500"
-                  onClick={handleLogout}
-                >
-                  Logout ({shopkeeperData.shopname}){" "}
+                  Logout ({deliveryData.firstname}){" "}
                 </p>
                 
               ) : (
                 <>
                 
-                <Link to ={"shopkeeperlogin"} className='whitespace-nowrap cursor-pointer'>Shopkeeper Login</Link>
+                <Link to ={"shopkeeperlogin"} className='whitespace-nowrap cursor-pointer'>Delivery Login</Link>
                 </>
               )}
 
@@ -231,54 +214,13 @@ const Header = () => {
             <div className="absolute right-2 bg-white py-2  shadow drop-shadow-md flex flex-col min-w-[120px] text-center">
 
 
-              {userData.firstName ? (
-                <p
-                  className="cursor-pointer text-white px-2 bg-red-500"
-                  onClick={handleLogout}
-                >
-                  Logout ({userData.firstName}){" "}
-                </p>
-                
-              ) : (
-                <>
-                <Link to ={"login"} className='whitespace-nowrap cursor-pointer'>Customer Login</Link>
-                
-                </>
-              )}
-              {shopkeeperData.shopname ? (
-                <p
-                  className="cursor-pointer text-white px-2 bg-red-500"
-                  onClick={handleLogout}
-                >
-                  Logout ({shopkeeperData.shopname}){" "}
-                </p>
-                
-              ) : (
-                <>
-                
-                <Link to ={"shopkeeperlogin"} className='whitespace-nowrap cursor-pointer'>Shopkeeper Login</Link>
-                </>
-              )}
-              {deliveryData.email ? (
-                <p
-                  className="cursor-pointer text-white px-2 bg-red-500"
-                  onClick={handleLogout}
-                >
-                  Logout 
-                </p>
-                
-              ) : (
-                <>
-                
-                <Link to ={"deliverylogin"} className='whitespace-nowrap cursor-pointer'>Delivery Login</Link>
-                </>
-              )}
+              
               {adminData.email ? (
                 <p
                   className="cursor-pointer text-white px-2 bg-red-500"
                   onClick={handleLogout}
                 >
-                  Logout 
+                  Logout Admin
                 </p>
                 
               ) : (
@@ -311,7 +253,7 @@ const Header = () => {
       </div>
     </div>
     </header>  
-      :
+      :  userData.firstName ?
       <header className="fixed shadow-md w-full h-16 px-2 md:px-4 z-50 bg-white">
       {/* desktop */}
       <div className="flex items-center h-full justify-between">
@@ -325,6 +267,75 @@ const Header = () => {
         <nav className="gap-4 md:gap-6 text-base md:text-lg hidden md:flex">
           <Link to={""}>Home</Link>
           <Link to={"orders/"+userData._id}>Orders</Link>
+          <Link to={"about"}>About</Link>
+          <Link to={"contact"}>Contact</Link>
+        </nav>
+        
+        <div className=" text-slate-600" onClick={handleShowMenu}>
+          <div className="text-3xl cursor-pointer w-8 h-8 rounded-full overflow-hidden drop-shadow-md">
+            {userData.image ? (
+              <img src={userData.image} className="h-full w-full" />
+            ) : (
+              <HiOutlineUserCircle />
+            )}
+          </div>
+          {showMenu && (
+            <div className="absolute right-2 bg-white py-2  shadow drop-shadow-md flex flex-col min-w-[120px] text-center">
+
+
+              {userData.firstName ? (
+                <p
+                  className="cursor-pointer text-white px-2 bg-red-500"
+                  onClick={handleLogout}
+                >
+                  Logout ({userData.firstName}){" "}
+                </p>
+                
+              ) : (
+                <>
+                <Link to ={"login"} className='whitespace-nowrap cursor-pointer'>Customer Login</Link>
+                
+                </>
+              )}
+              
+
+              <nav className="text-base md:text-lg flex flex-col md:hidden">
+                <Link to={""} className="px-2 py-1">
+                  Home
+                </Link>
+                <Link
+                  to={"orders/"+userData._id}
+                  className="px-2 py-1"
+                >
+                  Orders
+                </Link>
+                <Link to={"about"} className="px-2 py-1">
+                  About
+                </Link>
+                <Link to={"contact"} className="px-2 py-1">
+                  Contact
+                </Link>
+              </nav>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+    </header> 
+      :
+      <header className="fixed shadow-md w-full h-16 px-2 md:px-4 z-50 bg-white">
+      {/* desktop */}
+      <div className="flex items-center h-full justify-between">
+      <Link to={""}>
+        <div className="h-10">
+          <img src={logo} className="h-full" />
+        </div>
+      </Link>
+
+      <div className="flex items-center gap-4 md:gap-7">
+        <nav className="gap-4 md:gap-6 text-base md:text-lg hidden md:flex">
+          <Link to={""}>Home</Link>
+          <Link to={"login"}>Orders</Link>
           <Link to={"about"}>About</Link>
           <Link to={"contact"}>Contact</Link>
         </nav>

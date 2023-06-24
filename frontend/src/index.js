@@ -32,6 +32,8 @@ import AdminLogin from "./page/admin/AdminLogin";
 import DeliverySignup from "./page/delivery/DeliverySignup";
 import DeliveryLogin from "./page/delivery/DeliveryLogin";
 import DeliveryProfile from "./page/delivery/DeliveryProfile";
+import DeliveryOrders from "./page/delivery/DeliveryOrders";
+import DeliveryStatus from "./page/delivery/DeliveryStatus";
 
 import { store } from "./redux/index";
 import { Provider } from "react-redux";
@@ -64,6 +66,8 @@ const router = createBrowserRouter(
         <Route path='deliverysignup' element={<DeliverySignup/>}/>
         <Route path='deliverylogin' element={<DeliveryLogin/>}/>
         <Route path='deliveryprofile' element={<DeliveryProfile/>}/>
+        <Route path='deliveryorders' element={<DeliveryOrders/>}/>
+        <Route path='deliverystatus/:id' element={<DeliveryStatus/>}/>
 
         <Route path='adminlogin' element={<AdminLogin/>}/>
         <Route path='adminorders' element={<AdminOrders/>}/>

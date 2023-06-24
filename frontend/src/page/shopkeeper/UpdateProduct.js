@@ -26,7 +26,7 @@ const UpdateProduct = () => {
       );
 
       const dataRes = await fetchData.json();
-      console.log(dataRes);
+      console.log("shop"+dataRes);
       dispatch(setDataProduct(dataRes));
     };
 

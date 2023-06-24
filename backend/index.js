@@ -448,6 +448,38 @@ app.post("/adminlogin",async (req,res)=>{
   }
 })
 
+app.post("/orderdisplay",async(req,res)=>{
+  const {deliveryguy } = req.body
+  const resultdata = await orderModel.find({deliveryguy: deliveryguy})
+  console.log("delivery"+resultdata)
+  if (resultdata) {
+      console.log(resultdata)
+      res.send({alert:true,data:resultdata})
+  }
+  else{
+      res.send({message:"No products available"})
+  }
+})
+
+app.get('/status/:id',async(req,res)=>{
+  let result = await orderModel.findOne({_id:req.params.id})
+  if(result){
+      res.send(result)
+  }
+  else{
+      res.send({"result":"No records found"})
+  }
+})
+
+app.put('/status/:id',async(req,res)=>{
+  let result = await orderModel.updateOne(
+      {_id:req.params.id},{...req.body}      
+  )
+  console.log(result)
+  res.send(result)
+})
+
+
 app.get('/orders/:id',async(req,res)=>{
   let result = await orderModel.find({userId:req.params.id})
   console.log("result is "+result)

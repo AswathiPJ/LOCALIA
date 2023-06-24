@@ -82,7 +82,7 @@ const DeliveryLogin = () => {
               <span className='flex text-xl cursor pointer' onClick={handleShowPassword}>{showPassword ?<BiShow/> :<BiHide/>}</span>
               </div>
             
-            <button className='w-full m-auto mt-4 max-w-[400px] max-w-[100py] bg-pink-900 hover:bg-pink-950 cursor pointer text-white text-lg font-medium text-center rounded-full'>Login as Shopkeeper</button>
+            <button className='w-full m-auto mt-4 max-w-[400px] max-w-[100py] bg-pink-900 hover:bg-pink-950 cursor pointer text-white text-lg font-medium text-center rounded-full'>Login as Delivery</button>
           </form>
           <p className='text-center text-sm'>Don't have an account ? <Link to="/deliverysignup" className='text-pink-950 underline'>Delivery Signup</Link></p>
         </div>
