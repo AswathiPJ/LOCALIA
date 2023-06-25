@@ -87,16 +87,7 @@ const ShopkeeperLogin = () => {
           <p className='text-center text-sm'>Don't have an account ? <Link to="/shopkeepersignup" className='text-pink-950 underline'>Shopkeeper Signup</Link></p>
         </div>
       </div>
-      <div class="column right bg-red-50">
-        <div class='h-screen flex items-center justify-center'>
-          <div>
-          <div className='semicircle'>
-          </div>
-          <div className='shadowsemicircle blur-sm'>
-          </div>
-          </div>
-        </div>
-      </div>
+      
     </div>
     
   )
