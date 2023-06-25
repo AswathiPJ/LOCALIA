@@ -44,7 +44,7 @@ const handleSubmit=async(e)=>{
   const dataresult = await result.json()
   if(dataresult){
     toast("Assigned successfully")
-    navigate('/shopprofile')
+    navigate('/adminorders')
   }
 }
 
