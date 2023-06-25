@@ -40,6 +40,8 @@ const userModel = mongoose.model("user", userSchema);
 
 const productSchema = mongoose.Schema({
   shopname:"String",
+  city: "String",
+  landmark: "String",
   productid: {
       type:"String",
       unique:true
@@ -367,6 +369,7 @@ const orderSchema = mongoose.Schema({
   },
     shopname:"String",
     city:"String",
+    landmark:"String",
     name: "String",
     category: "String",
     qty: "String",

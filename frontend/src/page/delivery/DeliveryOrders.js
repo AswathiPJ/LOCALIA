@@ -47,6 +47,8 @@ const DeliveryOrders = () => {
             <tr>
               <th>Product name</th>
               <th>Shop name</th>
+              <th>Shop city</th>
+              <th>Shop landmark</th>
               <th>Quantity</th>
               <th>Delivery address </th>
               <th>Total</th>
@@ -60,6 +62,8 @@ const DeliveryOrders = () => {
               <tr key={item._id}>
                 <td>{item.name}</td>
                 <td>{item.shopname}</td>
+                <td>{item.city}</td>
+                <td>{item.landmark}</td>
                 <td>{item.qty}</td>
                 <td>{item.address}</td>
                 <td>{item.total}</td>

@@ -13,6 +13,8 @@ const AddProduct = () => {
   const shopkeeperData = useSelector((state)=>state.shopkeeper)
     const [data,setData] = useState({
         shopname:shopkeeperData.shopname,
+        city:shopkeeperData.city,
+        landmark:shopkeeperData.landmark,
         productid:"",
         productname:"",
         category:"",

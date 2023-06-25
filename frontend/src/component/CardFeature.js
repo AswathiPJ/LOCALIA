@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { addCartItem,increaseQty } from "../redux/productSlide";
 
-const CardFeature = ({ image, name, price, category, loading, id ,shopname}) => {
+const CardFeature = ({ image, name, price, category, loading, id ,shopname,city,landmark}) => {
   const dispatch = useDispatch()
 
   const handleAddCartProduct = (e) => {
@@ -13,7 +13,10 @@ const CardFeature = ({ image, name, price, category, loading, id ,shopname}) => 
       price : price,
       category : category,
       image : image,
-      shopname:shopname
+      shopname:shopname,
+      city:city,
+      landmark:landmark
+
     }))
   };
 

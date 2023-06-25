@@ -115,6 +115,7 @@ Let's purchase with Localia!
           
           {filter[0]
             ? filter.map((el) => {
+              
                 return (
                   <CardFeature
                     key={el._id+category}
@@ -124,6 +125,8 @@ Let's purchase with Localia!
                     price={el.price}
                     image={el.image}
                     shopname={el.shopname}
+                    city={el.city}
+                    landmark={el.landmark}
                   />
                 );
               })

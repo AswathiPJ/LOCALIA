@@ -30,15 +30,17 @@ const Cart = () => {
   const handleOrder=async ()=> {
 
     productCartItem.map(async (el)=>{
-      const {name,category,image,qty,total,shopname}=el
+      
+      const {name,category,image,qty,total,shopname,city,landmark}=el
+      console.log("el"+city)
       
     const fetchData = await fetch(`${process.env.REACT_APP_SERVER_DOMIN}/orders`,{
       method : "POST",
       headers : {
         "content-type" : "application/json"
       },
-      body : JSON.stringify({userId,name,category,image,qty,total,shopname,address})
-    })
+      body : JSON.stringify({userId,name,category,image,qty,total,shopname,address,city,landmark})
+    })  
     const dataRes = await fetchData.json()
     console.log(dataRes)
     })
