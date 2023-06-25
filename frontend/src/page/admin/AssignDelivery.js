@@ -54,16 +54,11 @@ const handleSubmit=async(e)=>{
 
   return (
     <div className="row">
-      <div className="column left bg-red-200">
-      <div className='mt-5'>
-          <Link to={"/shopprofile"} >PROFILE</Link>
-          </div>
-          
-    </div>
+      
       <div className="column right bg-white p-3 md:p-4">
       <div className='w-full max-w-sm m-auto'>
           <h1 className='text-center text-xl text-black'>
-            Update Product
+            Assign Delivery Employee
           </h1>
         </div>
         <div className='p-3 md:p-4 w-full max-w-lg m-auto'>
