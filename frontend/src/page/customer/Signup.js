@@ -83,8 +83,13 @@ console.log(process.env.REACT_APP_SERVER_DOMIN)
   return (
     <div className="p-3 md:p-4">
       <div className="w-full max-w-sm bg-white m-auto flex  flex-col p-4">
+      <div className='w-full max-w-sm m-auto'>
+          <h1 className='text-center font-bold text-3xl text-pink-800'>
+            Sign Up as Customer
+          </h1>
+        </div>
         {/* <h1 className='text-center text-2xl font-bold'>Sign up</h1> */}
-        <div className="w-20 h-20 overflow-hidden rounded-full drop-shadow-md shadow-md m-auto relative ">
+        {/* <div className="w-20 h-20 overflow-hidden rounded-full drop-shadow-md shadow-md m-auto relative ">
           <img src={data.image ? data.image :  loginSignupImage} className="w-full h-full" />
 
           <label htmlFor="profileImage">
@@ -93,7 +98,7 @@ console.log(process.env.REACT_APP_SERVER_DOMIN)
             </div>
             <input type={"file"} id="profileImage" accept="image/*" className="hidden" onChange={handleUploadProfileImage}/>
           </label>
-        </div>
+        </div> */}
 
         <form className="w-full py-3 flex flex-col" onSubmit={handleSubmit}>
           <label htmlFor="firstName">First Name</label>
@@ -172,13 +177,13 @@ console.log(process.env.REACT_APP_SERVER_DOMIN)
             </span>
           </div>
 
-          <button className="w-full max-w-[150px] m-auto  bg-red-500 hover:bg-red-600 cursor-pointer  text-white text-xl font-medium text-center py-1 rounded-full mt-4">
+          <button className="w-full max-w-[150px] m-auto  bg-pink-900  cursor-pointer  text-white text-xl font-medium text-center py-1 rounded-full mt-4">
             Sign up
           </button>
         </form>
         <p className="text-left text-sm mt-2">
           Already have account ?{" "}
-          <Link to={"/login"} className="text-red-500 underline">
+          <Link to={"/login"} className="text-pink-900 underline">
             Login
           </Link>
         </p>

@@ -64,7 +64,7 @@ function DeliverySignup(){
       <div class="column right bg-white p-3 md:p-4">
         <div className='w-full max-w-sm m-auto'>
           <h1 className='text-center font-bold text-3xl text-pink-800'>
-            Sign Up as Delivery Guy
+            Sign Up as Delivery Employee
           </h1>
         </div>
         <div className='p-3 md:p-4 w-full max-w-lg m-auto'>
@@ -94,9 +94,9 @@ function DeliverySignup(){
               <span className='flex text-xl cursor-pointer' onClick={handleShowPassword}>{showPassword ?<BiShow/> :<BiHide/>}</span>
               </div>
             
-            <button className='w-full m-auto mt-4 max-w-[400px] max-w-[100py] bg-pink-900 hover:bg-pink-950 cursor pointer text-white text-lg font-medium text-center rounded-full'>Create Account as Delivery guy</button>
+            <button className='w-full m-auto mt-4 max-w-[400px] max-w-[100py] bg-pink-900 hover:bg-pink-950 cursor pointer text-white text-lg font-medium text-center rounded-full'>Create Account as Delivery employee</button>
           </form>
-          <p className='text-center text-sm'>Already have an account ? <Link to="/shopkeeperlogin" className='text-pink-950 underline'>Shopkeeper Login</Link></p>
+          <p className='text-center text-sm'>Already have an account ? <Link to="/deliverylogin" className='text-pink-950 underline'>Delivery Login</Link></p>
         </div>
       </div>
     </div>

@@ -73,9 +73,12 @@ const Login = () => {
     <div className="p-3 md:p-4">
     <div className="w-full max-w-sm bg-white m-auto flex  flex-col p-4">
       {/* <h1 className='text-center text-2xl font-bold'>Sign up</h1> */}
-      <div className="w-20 overflow-hidden rounded-full drop-shadow-md shadow-md m-auto">
-        <img src={loginSignupImage} className="w-full" />
-      </div>
+      <div className='w-full max-w-sm m-auto'>
+          <h1 className='text-center font-bold text-3xl text-pink-800 mt-12'>
+            Login
+          </h1>
+          <p className='text-sm mt-5 text-center'>Welcome back! Please Enter your details.</p>
+        </div>
 
       <form className="w-full py-3 flex flex-col" onSubmit={handleSubmit}>
         <label htmlFor="email">Email</label>
@@ -107,13 +110,13 @@ const Login = () => {
           </span>
         </div>
 
-        <button className="w-full max-w-[150px] m-auto  bg-red-500 hover:bg-red-600 cursor-pointer  text-white text-xl font-medium text-center py-1 rounded-full mt-4">
+        <button className="w-full max-w-[150px] m-auto  bg-pink-900 cursor-pointer  text-white text-xl font-medium text-center py-1 rounded-full mt-4">
           Login
         </button>
       </form>
       <p className="text-left text-sm mt-2">
         Don't  have account ?{" "}
-        <Link to={"/signup"} className="text-red-500 underline">
+        <Link to={"/signup"} className='text-pink-900 underline'>
           Sign Up
         </Link>
       </p>

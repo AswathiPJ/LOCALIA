@@ -75,9 +75,9 @@ const AdminLogin = () => {
       <div class="column left bg-white p-3 md:p-4">
         <div className='w-full max-w-sm m-auto'>
           <h1 className='text-center font-bold text-3xl text-pink-800 mt-12'>
-            Login
+            Admin Portal
           </h1>
-          <p className='text-sm mt-5 text-center'>Welcome back! Please Enter your details.</p>
+          
         </div>
         <div className='p-3 md:p-4 w-full max-w-lg m-auto'>
         <form className='py-4 flex flex-col' onSubmit={handleSubmit}>

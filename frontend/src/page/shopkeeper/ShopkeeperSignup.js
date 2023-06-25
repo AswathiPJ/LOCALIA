@@ -60,16 +60,7 @@ function ShopkeeperSignup(){
    }
   return (
     <div class="row">
-      <div class="column left bg-red-50">
-        <div class='h-screen flex items-center justify-center'>
-          <div>
-          <div className='semicircle'>
-          </div>
-          <div className='shadowsemicircle blur-sm'>
-          </div>
-          </div>
-        </div>
-      </div>
+      
       <div class="column right bg-white p-3 md:p-4">
         <div className='w-full max-w-sm m-auto'>
           <h1 className='text-center font-bold text-3xl text-pink-800'>
