@@ -45,9 +45,10 @@ const DeliveryOrders = () => {
         <table style={{ width: "100%" }} className="styled-table">
           <thead>
             <tr>
-              <th>Name</th>
+              <th>Product name</th>
               <th>Shop name</th>
               <th>Quantity</th>
+              <th>Delivery address </th>
               <th>Total</th>
               <th>Current Status</th>
               <th>Update Status</th>
@@ -60,6 +61,7 @@ const DeliveryOrders = () => {
                 <td>{item.name}</td>
                 <td>{item.shopname}</td>
                 <td>{item.qty}</td>
+                <td>{item.address}</td>
                 <td>{item.total}</td>
                 <td>{item.deliverystatus}</td>
                 <td>

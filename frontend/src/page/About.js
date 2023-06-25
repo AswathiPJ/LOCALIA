@@ -4,11 +4,10 @@ const About = () => {
   return (
     <div>
       <p className='mt-5 text-xl'>ABOUT</p>
+      
       <p className='mt-10'>LOCALIA - The locality-based delivery system is a website that is intended to provide shopkeepers
-    with a platform to sell their products online. It also enables customers to search for their needed
-    products and purchase them without having to go to the shop physically. Our system also helps
-    small-scale entrepreneurs to sell their products through the website. This system also provides
-    employment opportunities for delivery drivers.</p>
+    with a platform to sell their products online.Our website combines the convenience of online shopping with the nostalgic feel of supporting local shops. Using cutting-edge computer vision technology, we connect you to nearby businesses, bringing back the joy of shopping locally. Experience the warmth and charm of your community as you browse and purchase products online, supporting your local economy while enjoying the ease and convenience of our platform.
+      </p>
       </div>
   )
 }

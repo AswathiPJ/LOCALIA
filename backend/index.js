@@ -123,6 +123,7 @@ app.post("/login",async (req, res) => {
         lastName: data.lastName,
         email: data.email,
         image: data.image,
+        address:data.address
       };
       console.log(dataSend);
       res.send({
