@@ -12,6 +12,7 @@ const Cart = () => {
   console.log(productCartItem)
   const user = useSelector(state => state.user)
   const userId=user._id
+  const address=user.address
   console.log(user)
   const navigate = useNavigate()
   const dispatch=useDispatch()
@@ -36,7 +37,7 @@ const Cart = () => {
       headers : {
         "content-type" : "application/json"
       },
-      body : JSON.stringify({userId,name,category,image,qty,total,shopname})
+      body : JSON.stringify({userId,name,category,image,qty,total,shopname,address})
     })
     const dataRes = await fetchData.json()
     console.log(dataRes)

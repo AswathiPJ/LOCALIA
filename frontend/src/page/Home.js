@@ -59,7 +59,7 @@ const Home = () => {
 Let's purchase with Localia!
           </p>
           <button className="font-bold bg-red-500 text-slate-200 px-4 py-2 rounded-md">
-            Order Now
+            Start purchasing...!
           </button>
         </div>
 

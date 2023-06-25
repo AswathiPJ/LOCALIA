@@ -365,13 +365,15 @@ const orderSchema = mongoose.Schema({
       require: true,
   },
     shopname:"String",
+    city:"String",
     name: "String",
     category: "String",
     qty: "String",
     total: "String",
     image:"String",
     deliveryguy:"String",
-    deliverystatus:"String"
+    deliverystatus:"String",
+    address:"String"
 })
 
 const orderModel = mongoose.model("orders",orderSchema)

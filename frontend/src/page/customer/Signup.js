@@ -16,6 +16,7 @@ function Signup() {
     email: "",
     password: "",
     confirmPassword: "",
+    address:"",
     image : ""
   });
 
@@ -51,8 +52,8 @@ function Signup() {
 console.log(process.env.REACT_APP_SERVER_DOMIN)
   const handleSubmit = async(e) => {
     e.preventDefault();
-    const { firstName, email, password, confirmPassword } = data;
-    if (firstName && email && password && confirmPassword) {
+    const { firstName, email, password, confirmPassword ,address} = data;
+    if (firstName && email && password && confirmPassword && address) {
       if (password === confirmPassword) {
           const fetchData = await fetch(`${process.env.REACT_APP_SERVER_DOMIN}/signup`,{
             method : "POST",
@@ -122,6 +123,16 @@ console.log(process.env.REACT_APP_SERVER_DOMIN)
             name="email"
             className="mt-1 mb-2 w-full bg-slate-200 px-2 py-1 rounded focus-within:outline-blue-300"
             value={data.email}
+            onChange={handleOnChange}
+          />
+
+        <label htmlFor="address">Address</label>
+          <input
+            type={"text"}
+            id="address"
+            name="address"
+            className="mt-1 mb-2 w-full bg-slate-200 px-2 py-1 rounded focus-within:outline-blue-300"
+            value={data.address}
             onChange={handleOnChange}
           />
 
