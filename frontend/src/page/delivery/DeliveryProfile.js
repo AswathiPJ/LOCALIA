@@ -25,9 +25,10 @@ const Deliveryprofile = () => {
       <div class="column right bg-white p-3 md:p-4 ">
         <p className='mt-5 text-xl'>PROFILE</p>
           <p className='mt-10'>Name: {deliveryData.firstname} </p>
-          <p className='mt-2'>Name: {deliveryData.phonenumber} </p>
-          <p className='mt-2'>Name: {deliveryData.email} </p>
-          <p className='mt-2'>Name: {deliveryData.city} </p>
+          <p className='mt-2'>Phone number: {deliveryData.phonenumber} </p>
+          <p className='mt-2'>Licence number: {deliveryData.licencenumber} </p>
+          <p className='mt-2'>Email: {deliveryData.email} </p>
+          <p className='mt-2'>City: {deliveryData.city} </p>
                  
       </div>
       
