@@ -54,8 +54,9 @@ const Home = () => {
             <span className="text-red-600 text-">Doorsteps</span>
           </h2>
           <p className="py-3 text-base ">
-          A single click and your order will be at your doorsteps within minutes.
-          Let's purchase with Localia.
+          A single click and the orders will be at your doorsteps within minutes. 
+          Get your needed things from nearby shops ..
+Let's purchase with Localia!
           </p>
           <button className="font-bold bg-red-500 text-slate-200 px-4 py-2 rounded-md">
             Order Now
