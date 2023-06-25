@@ -29,7 +29,7 @@ const Shopprofile = () => {
           <p className='mt-2'> Location: {shopkeeperData.city} </p>
           <p className='mt-2'>Landmark: {shopkeeperData.landmark} </p>
           <p className='mt-2'> Phone Number: {shopkeeperData.phonenumber} </p> 
-          <p className='mt-2'>Working Hours: {shopkeeperData.workinghours} </p>         
+          {/* <p className='mt-2'>Working Hours: {shopkeeperData.workinghours} </p>          */}
       </div>
       
     </div>
