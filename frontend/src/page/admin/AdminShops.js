@@ -10,19 +10,16 @@ import { setDataProduct } from '../../redux/productsSlice'
 
 
 
-const AdminOrders = () => {
+const AdminShops = () => {
   const [orders,setOrders]=useState([])
-  const dispatch = useDispatch()
-  const productData = useSelector((state)=>state.products)
-  const shopkeeperData = useSelector((state)=>state.shopkeeper)
-  const data={shopname:shopkeeperData.shopname}
+  
  
 
  
   useEffect(() => {
     const fetchTheData = async () => {
       const fetchData = await fetch(
-        `${process.env.REACT_APP_SERVER_DOMIN}/adminorders`);
+        `${process.env.REACT_APP_SERVER_DOMIN}/adminshops`);
 
       const dataRes = await fetchData.json();
       setOrders(dataRes)
@@ -36,16 +33,15 @@ const AdminOrders = () => {
   
   
   <div className='product-list'>
-  <h3 className='text-xl text-bold text-pink-950 mb-5'>ORDERS</h3>
+  <h3 className='text-xl text-bold text-pink-950 mb-5'>SHOPS LIST</h3>
   <table style={{width:"100%" }} class="styled-table" >
   <thead>
     <tr>
-      <th>Name</th>
+      <th>Licence Number</th>
       <th>Shop name</th>
-      <th>Total</th>
-      <th>DeliveryGuy</th>
-      <th>DeliveryStatus</th>
-      <th>Assign</th>
+      <th>City</th>
+      <th>Landmark</th>
+      <th>Working Hours</th>
 
     </tr>
   </thead>
@@ -55,15 +51,12 @@ const AdminOrders = () => {
       orders.map((item)=>
 
       <tr key={item._id}>
-      <td>{item.name}</td>
+      <td>{item.shoplicencenumber}</td>
       <td>{item.shopname}</td>
-      <td>{item.total}</td>
-      <td>{item.deliveryguy}</td>
-      <td>{item.deliverystatus}</td>
-      <td><button className='bg-pink-800 hover:bg-red-950'>
-            <Link to={"/assignDelivery/"+item._id} className='text-white'>Assign Delivery Guy</Link>
-          </button>
-      </td>
+      <td>{item.city}</td>
+      <td>{item.landmark}</td>
+      <td>{item.workinghours}</td>
+      
     </tr>
 )
     }
@@ -79,4 +72,4 @@ const AdminOrders = () => {
   )
 }
 
-export default AdminOrders
+export default AdminShops

@@ -31,6 +31,7 @@ const userSchema = mongoose.Schema({
   password: String,
   confirmPassword: String,
   image: String,
+  address:String
 });
 
 //
@@ -391,6 +392,22 @@ res.send({message:"success"})
 app.get("/adminorders",async(req,res)=>{
   console.log("Enter admin")
   const data = await orderModel.find({})
+  res.send(JSON.stringify(data))
+  
+});
+
+app.get("/admindelivery",async(req,res)=>{
+  
+  const data = await deliveryModel.find({})
+  res.send(JSON.stringify(data))
+  
+});
+
+app.get("/adminshops",async(req,res)=>{
+  console.log("Entered adminshops")
+  
+  const data = await shopkeeperModel.find({})
+  
   res.send(JSON.stringify(data))
   
 });

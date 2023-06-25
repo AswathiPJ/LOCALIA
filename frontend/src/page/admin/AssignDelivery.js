@@ -10,6 +10,8 @@ import { useDispatch } from 'react-redux'
 const AssignDelivery = () => {
   
   const [name,setName]=useState('')
+  const [shopname,setShopname]=useState('')
+  
   const [qty,setQty]=useState('')
   const [total,setTotal]=useState('')
   const [deliveryguy,setGuy]=useState('')
@@ -23,6 +25,7 @@ const AssignDelivery = () => {
    let result = await fetch(`${process.env.REACT_APP_SERVER_DOMIN}/assign/${params.id}`)
    result=await result.json()
    console.warn(result)
+   setShopname(result.shopname)
    setName(result.name)
    setQty(result.qty)
    setTotal(result.total)

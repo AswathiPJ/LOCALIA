@@ -28,12 +28,15 @@ import UpdateProduct from "./page/shopkeeper/UpdateProduct";
 import AdminOrders from "./page/admin/AdminOrders";
 import AssignDelivery from "./page/admin/AssignDelivery";
 import AdminLogin from "./page/admin/AdminLogin";
+import DeliveryDetails from "./page/admin/DeliveryDetails";
+import AdminShops from "./page/admin/AdminShops";
 
 import DeliverySignup from "./page/delivery/DeliverySignup";
 import DeliveryLogin from "./page/delivery/DeliveryLogin";
 import DeliveryProfile from "./page/delivery/DeliveryProfile";
 import DeliveryOrders from "./page/delivery/DeliveryOrders";
 import DeliveryStatus from "./page/delivery/DeliveryStatus";
+
 
 import { store } from "./redux/index";
 import { Provider } from "react-redux";
@@ -72,6 +75,8 @@ const router = createBrowserRouter(
         <Route path='adminlogin' element={<AdminLogin/>}/>
         <Route path='adminorders' element={<AdminOrders/>}/>
         <Route path='assigndelivery/:id' element={<AssignDelivery/>}/>
+        <Route path='deliverydetails' element={<DeliveryDetails/>}/>
+        <Route path='adminshops' element={<AdminShops/>}/>
 
 
     </Route>

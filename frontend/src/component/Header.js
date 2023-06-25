@@ -199,6 +199,8 @@ const Header = () => {
       <div className="flex items-center gap-4 md:gap-7">
         <nav className="gap-4 md:gap-6 text-base md:text-lg hidden md:flex">
           
+        <Link to={"adminshops"}>Shops</Link>
+        <Link to={"deliverydetails"}>Delivery Employees</Link>
           <Link to={"adminorders"}>Assign orders</Link>
         </nav>
         
