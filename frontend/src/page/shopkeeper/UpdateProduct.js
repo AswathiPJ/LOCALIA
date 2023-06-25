@@ -52,7 +52,7 @@ const UpdateProduct = () => {
             {productData.productList.map((item) => (
               <tr key={item._id}>
                 <td>{item.productid}</td>
-                <td>{item.productname.split(" ").pop()}</td>
+                <td>{item.productname}</td>
                 <td>{item.stock}</td>
                 <td>{item.price}</td>
                 <td>
